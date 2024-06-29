@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TITULO -->
+    <link rel="icon" href="iconos/musica.png" type="image/x-icon">
+    <title>Here With Me </title>
+
+    <style>
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('iconos/Fondo_atardecer.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .centered {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    /* Letras en español */
+    h1 {
+        font-weight: bolder;
+        font-size: 2em;
+        font-family: MythicalPrince;
+    }
+
+    @font-face {
+        font-family: MythicalPrince;
+        src: url("Letras/Mythical Prince.ttf");
+    }
+    
+    /* Letras en ingles */ 
+    h2 {
+        font-size: 1.5em;
+        font-family: ExistenceLight;
+    }
+
+    @font-face {
+        font-family: ExistenceLight;
+        src: url("Letras/Existence-Light.ttf");
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 1200px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            h1 {
+                font-size: 1.6em;
+            }
+
+            h2 {
+                font-size: 1em;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 1.4em;
+            }
+
+            h2 {
+                font-size: 0.9em;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            h1 {
+                font-size: 1.2em;
+            }
+
+            h2 {
+                font-size: 0.8em;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="welcome-message" class="centered">
+        <h2>Toca la pantalla</h2>
+    </div>
+
+    <div id="content" class="centered hidden">
+        <h1 id="linea-espanol"></h1>
+        <h2 id="linea-ingles"></h2>
+    </div>
+
+    <audio id="audio" src="sound/Here With Me (Lyrics).mp3"></audio>
+
+    <script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('audio');
+        const welcomeMessage = document.getElementById('welcome-message');
+        const content = document.getElementById('content');
+        const lineaEspanol = document.getElementById('linea-espanol');
+        const lineaIngles = document.getElementById('linea-ingles');
+        
+        const subtitles = [
+
+            { time: 1, spanish: "♫♫♫♫♫", english: "" },
+            { time: 5, spanish: "♫♫♫", english: "" },
+            { time: 9, spanish: "♫", english: "" },
+
+            { time: 13, spanish: "AQUÍ CONTIGO", english: "Here With Me" },
+
+            { time: 22, spanish: "3", english: "♪" },
+            { time: 25, spanish: "2", english: "♪♪♪" },
+            { time: 28, spanish: "1", english: "♪♪♪♪♪" },
+
+
+            { time: 30, spanish: "VER SALIR EL SOL A LO LARGO DE LA COSTA", english: "Watch the sunrise along the coast" },
+            { time: 35, spanish: "MIENTRAS AMBOS ENVEJECEMOS", english: "As we're both getting old" },
+            { time: 40, spanish: "NO PUEDO DESCRIBIR LO QUE ESTOY SINTIENDO", english: "I can't describe what I'm feeling" },
+            { time: 45, spanish: "Y TODO LO QUE SÉ ES QUE NOS VAMOS A CASA", english: "And all I know is we're going home" },
+            { time: 49, spanish: "ASÍ QUE POR FAVOR NO ME DEJES IR", english: "So, please, don't let me go" },
+            { time: 54, spanish: "NO ME DEJES IR", english: "Don't let me go, oh" },
+
+
+            { time: 57, spanish: "Y SI ES CORRECTO", english: "And if it's right" },
+
+
+            { time: 60, spanish: "NO ME IMPORTA CUANTO TIEMPO LLEVE", english: "I don't care how long it takes" },
+            { time: 67, spanish: "MIENTRAS ESTOY CONTIGO, TENGO UNA SONRISA EN MI CARA", english: "As long as I'm with you, I've got a smile on my face" },
+            { time: 75, spanish: "GUARDA TUS LÁGRIMAS TODO ESTARÁ BIEN", english: "Save your tears, it'll be okay" },
+            { time: 83, spanish: "TODO LO QUE SÉ", english: "All I know" },
+            { time: 87, spanish: "ES QUE ESTÁS AQUÍ CONMIGO", english: "Is you're here with me" },
+
+
+            { time: 94, spanish: "Ooh, ooh, ooh, ooh", english: "Ooh, ooh, ooh, ooh" },
+            { time: 106, spanish: "MIRA SALIR EL SOL MIENTRAS ENVEJECEMOS, oh, oh", english: "Watch the sunrise as we're getting old, oh, oh" },
+            { time: 117, spanish: "NO PUEDO DESCRIBIRLO, oh, oh", english: "I can't describe, oh, oh" },
+            { time: 121, spanish: "DESEARÍA PODER VIVIR A TRAVÉS DE CADA RECUERDO TUYO", english: "I wish I could live through every memory again" },
+            { time: 130, spanish: "SOLO UNA VEZ MÁS ANTES DE QUE FLOTES EN EL VIENTO", english: "Just one more time before we float off in the wind" },
+            { time: 137, spanish: "Y TODO EL TIEMPO QUE PASAMOS ESPERANDO A QUE LA LUZ NOS LLEVE", english: "And all the time we spent waiting for the light to take us in" },
+            { time: 145, spanish: "HAN SIDO LOS MEJORES MOMENTOS DE MI VIDA", english: "Have been the greatest moments of my life" },
+
+
+            { time: 151, spanish: "NO ME IMPORTA CUANTO TIEMPO TOME", english: "I don't care how long it takes" },
+            { time: 159, spanish: "MIENTRAS ESTOY CONTIGO, TENGO UNA SONRISA EN MI CARA", english: "As long as I'm with you, I've got a smile on my face" },
+            { time: 166, spanish: "GUARDA TUS LÁGRIMAS, TODO ESTARÁ BIEN", english: "Save your tears, it'll be okay" },
+            { time: 178, spanish: "ESTÁS AQUÍ CONMIGO", english: "You're here with me" },
+
+            
+            { time: 185, spanish: "Ooh, ooh, ooh, oh", english: "Ooh, ooh, ooh, oh" },
+            { time: 193, spanish: "NO PUEDO DESCRIBIRLO, oh, oh", english: "I can't describe, oh, oh" },
+
+            { time: 202, spanish: "Fuiste, eres y siempre seras mi mejor casualidad", english: "No lo olvides ... Te amo ..." },
+            { time: 212, spanish: "Y te lo digo con la boca cuando te beso,", english: "te lo digo con mis manos cuando te toco y con mi mente cuando te pienso." },
+        ];
+
+        let subtitleIndex = 0;
+
+        document.body.addEventListener('click', () => {
+            welcomeMessage.classList.add('hidden');
+            content.classList.remove('hidden');
+            audio.play();
+            
+            audio.addEventListener('timeupdate', () => {
+                if (subtitleIndex < subtitles.length && audio.currentTime >= subtitles[subtitleIndex].time) {
+                    lineaEspanol.textContent = subtitles[subtitleIndex].spanish;
+                    lineaIngles.textContent = subtitles[subtitleIndex].english;
+                    subtitleIndex++;
+                }
+            });
+
+            audio.addEventListener('ended', () => {
+                audio.currentTime = 0;
+                subtitleIndex = 0;
+                audio.play();
+            });
+        }, { once: true });
+    });
+
+    </script>
+
+</body>
+</html>

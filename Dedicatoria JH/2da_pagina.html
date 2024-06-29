@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TITULO -->
+    <link rel="icon" href="iconos/segundo.png" type="image/x-icon">
+    <title>Carta para mi niño 🥰🌹</title>
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: I Love What You Do;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Tipo de Letra */
+        @font-face {
+            font-family: I Love What You Do;
+            src: url("Letras/I Love What You Do!!...ttf");
+        }
+
+        .neon-text {
+            font-size: 2em;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* BOTON */
+        .neon-button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: transparent;
+            color: #00ff99;
+            border: 2px solid #00ff99;
+            border-radius: 30px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .neon-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, #00ff99, transparent);
+            transition: left 0.3s;
+        }
+
+        .neon-button:hover::before {
+            left: 100%;
+        }
+
+        /* FONDO DE CORAZON */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            transform: rotate(-45deg);
+            animation: floatUp 5s linear infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: 10px;
+        }
+
+        @keyframes floatUp {
+            0% {
+                bottom: -50px;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+            }
+        }
+
+        /* MEDIA QUERIES */
+        @media screen and (max-width: 1200px) {
+            .neon-text {
+                font-size: 1.8em;
+            }
+
+            .neon-button {
+                font-size: 1.1em;
+                padding: 8px 18px;
+            }
+
+            .heart {
+                width: 18px;
+                height: 18px;
+            }
+
+            .heart:before, .heart:after {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .neon-text {
+                font-size: 1.6em;
+            }
+
+            .neon-button {
+                font-size: 1em;
+                padding: 6px 16px;
+            }
+
+            .heart {
+                width: 16px;
+                height: 16px;
+            }
+
+            .heart:before, .heart:after {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .neon-text {
+                font-size: 1.4em;
+            }
+
+            .neon-button {
+                font-size: 0.9em;
+                padding: 5px 14px;
+            }
+
+            .heart {
+                width: 14px;
+                height: 14px;
+            }
+
+            .heart:before, .heart:after {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .neon-text {
+                font-size: 1.2em;
+            }
+
+            .neon-button {
+                font-size: 0.8em;
+                padding: 4px 12px;
+            }
+
+            .heart {
+                width: 12px;
+                height: 12px;
+            }
+
+            .heart:before, .heart:after {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id="dedicatoriaContainer"></div>
+
+    <!-- Mensaje inicial -->
+    <div id="initialMessage" class="neon-text" style="opacity: 1;">Toca la pantalla</div>
+
+    <!-- Audio -->
+    <audio id="myAudio" src="sound/Until I Found You.mp3"></audio>
+
+    <script>
+        const dedicatoria = [
+            "Joel mi amor ...",
+            "eres mi vida y mi pasion",
+            "eres mi realidad y mi fantasia",
+            "no, eres mi realidad",
+            "eres lo que tanto ama y anhela mi corazon",
+            "eres mi primer amor y el ultimo",
+            "si no te tengo muero por ti",
+            "mi cuerpo necesita tanto de tu presencia",
+            "porque eres mi alma gemela",
+            "eres mi amor y mi esperanza",
+            "no tengo otro companero mas que tu",
+            "eres lo mas precioso que tengo en la vida",
+            "es por ti que existo en este universo",
+            "si tuviera que elegir a alguien despues de la muerte",
+            "juro que te elegiria a ti",
+            "es la verdad",
+            "porque no hay otro rostro tan hermoso",
+            "que los ojos de todo el mundo lloren",
+            "pero que no lo hagan los tuyos",
+            "porque de hacerlo",
+            "yo derramaria sangre en lugar de lagrimas",
+            "que todo el mundo se enfade",
+            "pero te ruego amor mio",
+            "no te enfades tu",
+            "si te enfadaras explotaria de ira",
+            "solo por ti mi alma gemela",
+            "apiadate de este amante ",
+            "que solo ve tu magnificencia",
+            "pero no lo tientes con tu belleza",
+            "porque es un pobre enamorado que no lo soportaria",
+            "observa la belleza de este mundo",
+            "no es mas que una intima porcion",
+            "de la hermosura que habita en tu rostro y en tus ojos",
+            "todo el universo palidece ante la belleza que hay en ti",
+            "este pobre enamorado no puede vivir sin tus preciosos ojos",
+            "por favor ... ",
+            "no se los quites",
+            // Añade más líneas según sea necesario
+        ];
+
+        const container = document.getElementById('dedicatoriaContainer');
+        let currentLine = 0;
+
+        function showNextLine() {
+            if (currentLine < dedicatoria.length) {
+                const lineElement = document.createElement('div');
+                lineElement.className = 'neon-text';
+                lineElement.innerText = dedicatoria[currentLine];
+                container.appendChild(lineElement);
+                setTimeout(() => {
+                    lineElement.style.opacity = 1;
+                    setTimeout(() => {
+                        lineElement.style.opacity = 0;
+                        setTimeout(() => {
+                            container.removeChild(lineElement);
+                            currentLine++;
+                            showNextLine();
+                        }, 1000);
+                    }, 3500);
+                }, 100);
+            } else {
+                // Cuando se muestran todas las líneas de dedicatoria, añadir el botón
+                const continueButton = document.createElement('button');
+                continueButton.innerText = 'Toca aquí';
+                continueButton.className = 'neon-button';
+                continueButton.onclick = () => {
+                    window.location.href = 'dedicatoria1.html';
+                };
+                container.appendChild(continueButton);
+            }
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHeart, 500);
+
+        document.body.addEventListener('click', () => {
+            document.getElementById('initialMessage').style.display = 'none';
+            document.getElementById('myAudio').play();
+            showNextLine();
+        }, { once: true });
+    </script>
+
+</body>
+</html>
